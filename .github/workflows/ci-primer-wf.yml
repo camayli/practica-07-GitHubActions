@@ -16,9 +16,9 @@ jobs:
 
     steps: 
 
-      - name: Echooooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo 
+      - name: Echo
 
-        run: echooooooooooooooooooooooooooooooooooooooooooooo "Hello world" 
+        run: echo "Hello world" 
 
         shell: bash 
 
