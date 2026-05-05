@@ -1,17 +1,31 @@
-name: Workflow Windows
+name: Comandos de shell
 
-on: [push, workflow_dispatch] # Define cuándo se ejecuta (ej: al hacer push o manual)
+# on: push 
+
+on:
+  schedule:
+    - cron: '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'
 
 jobs:
-  comandos_windows:
-    runs-on: windows-latest
+  build_and_release:
+    runs-on: ubuntu-latest
+
     steps:
       - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: PowerShell
+      - name: Display the processor
         run: |
-          Get-Location
-          Get-ChildItem
-        shell: powershell
+          import platform
+          print(platform.system())
+          print(platform.processor())
+        shell: python
+
+      - name: Echo
+        run: echo "Hello world"
+
+      - name: OS Release
+        run: |
+          cat /etc/os-release
+        shell: bash
 
