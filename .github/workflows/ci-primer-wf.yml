@@ -1,46 +1,17 @@
-name: Comandos de shell 
- 
-on: push 
+name: Workflow Windows
 
-jobs: 
+on: [push, workflow_dispatch] # Define cuándo se ejecuta (ej: al hacer push o manual)
 
-  build_and_release: 
+jobs:
+  comandos_windows:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout del código
+        uses: actions/checkout@v4
 
-    runs-on: ubuntu-latest 
+      - name: PowerShell
+        run: |
+          Get-Location
+          Get-ChildItem
+        shell: powershell
 
-    steps: 
-     
-      - name: Display the processor 
-
-        run: | 
-
-          import platform 
-
-          print (platform.system())  
-
-          print (platform.processor()) 
-
-        shell: python
- 
-     
-      - name: Echo
-
-        run: echo "Hello world" 
-
-        shell: bash 
-
- 
-
-      - name: Display the path 
-
-        run: |   
-
-                node --version 
-
-                npm --version 
-
-                pwd 
-
-                cat /etc/os-release 
-
-        shell: bash  
