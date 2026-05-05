@@ -1,31 +1,55 @@
-name: Comandos de shell
-# on: push 
-#on:
-#  schedule:
-#    - cron: '0,5,10,15,20,25,30,35,40,45,50,55 * * * *'
+name: Variables de entorno 
+
+ 
+
 on: 
-  repository_dispatch: 
-    types: invocacion_desde_curl	
 
-jobs:
-  build_and_release:
-    runs-on: ubuntu-latest
+  push 
 
-    steps:
-      - name: Checkout del código
-        uses: actions/checkout@v4
+ 
 
-      - name: Display the processor
-        run: |
-          import platform
-          print(platform.system())
-          print(platform.processor())
-        shell: python
+env: 
 
-      - name: Echo
-        run: echo "Hello world"
+  user: vagrant 
 
-      - name: OS Release
-        run: |
-          cat /etc/os-release
-        shell: bash
+ 
+
+jobs: 
+
+  python-310: 
+
+    runs-on: ubuntu-latest 
+
+    env: 
+
+      Python: "3.10" 
+
+    steps: 
+
+      - name: Echo 
+
+        run: echo "Valor de user $user Valor de Python $Python Valor de fichero $fichero" 
+
+        env: 
+
+          fichero: "hola.py" 
+
+ 
+
+  python-312: 
+
+    runs-on: ubuntu-latest 
+
+    env: 
+
+      Python: "3.12" 
+
+    steps: 
+
+      - name: Echo 
+
+        run: echo "Valor de user $user Valor de Python $Python Valor de fichero $fichero" 
+
+        env: 
+
+          fichero: "adios.py" 
